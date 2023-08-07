@@ -14,3 +14,11 @@ def departmentApi(req, id=0):
 			departments = Departments.objects.all()
 			departments_serializer = DptSerializer(departments,many=True)
 			return JsonResponse(departments_serializer.data,safe=False)
+	elif req.method == 'POST':
+		department_data = JSONParser().parse(req)
+		departments_serializer = DptSerializer(data=department_data)
+		if departments_serializer.is_valid():
+			departments_serializer.save()
+			return JsonResponse('Added record Successfully',safe=False)
+		return JsonResponse('Failed to add a record',safe=False)
+
