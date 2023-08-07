@@ -1,1 +1,3 @@
 ./djangoAPI/djangoAPI/settings.py
+
+./djangoAPI/employeeapp/migrations/*
